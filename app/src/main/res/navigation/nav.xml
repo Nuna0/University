@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav"
+    app:startDestination="@id/actualFragmenrt">
+
+    <fragment
+        android:id="@+id/actualFragmenrt"
+        android:name="com.example.university.screens.ActualFragmenrt"
+        android:label="Актуальное"
+        tools:layout="@layout/actual_fragmenrt" >
+        <action
+            android:id="@+id/action_actualFragmenrt_to_fragmentHeaderOpen"
+            app:destination="@id/fragmentHeaderOpen" />
+    </fragment>
+    <fragment
+        android:id="@+id/programsFragment"
+        android:name="com.example.university.screens.ProgramsFragment"
+        android:label="Программы"
+        tools:layout="@layout/programs_fragment" />
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="com.example.university.screens.InfoFragment"
+        android:label="Контактная информация"
+        tools:layout="@layout/fragment_info" />
+    <fragment
+        android:id="@+id/fragmentHeaderOpen"
+        android:name="com.example.university.FragmentHeaderOpen"
+        android:label=""
+        tools:layout="@layout/fragment_header_open" >
+        <action
+            android:id="@+id/action_fragmentHeaderOpen_to_actualFragmenrt"
+            app:destination="@id/actualFragmenrt" />
+        <argument
+            android:name="currentHeader"
+            app:argType="com.example.university.model.Header" />
+    </fragment>
+</navigation>
