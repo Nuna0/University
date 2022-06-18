@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.example.university.model.FirstRecyclerModel
 import com.example.university.R
@@ -47,7 +48,7 @@ class ActualFirstAdapter:RecyclerView.Adapter<ActualFirstAdapter.ViewHolder>(){
 
         fun bind(model: Header){
             Glide.with(itemView.context).load(model.imgMin)
-                .apply(RequestOptions.centerCropTransform())
+                .apply(RequestOptions.bitmapTransform(RoundedCorners(14)))
                 .into(image)
 
             itemView.constraint.setOnClickListener {

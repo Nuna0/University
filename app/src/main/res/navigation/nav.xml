@@ -13,12 +13,19 @@
         <action
             android:id="@+id/action_actualFragmenrt_to_fragmentHeaderOpen"
             app:destination="@id/fragmentHeaderOpen" />
+        <action
+            android:id="@+id/action_actualFragmenrt_to_admissionFragment"
+            app:destination="@id/admissionFragment" />
     </fragment>
     <fragment
         android:id="@+id/programsFragment"
         android:name="com.example.university.screens.ProgramsFragment"
         android:label="Программы"
-        tools:layout="@layout/programs_fragment" />
+        tools:layout="@layout/programs_fragment" >
+        <action
+            android:id="@+id/action_programsFragment_to_bachelorFragment"
+            app:destination="@id/bachelorFragment" />
+    </fragment>
     <fragment
         android:id="@+id/infoFragment"
         android:name="com.example.university.screens.InfoFragment"
@@ -35,5 +42,29 @@
         <argument
             android:name="currentHeader"
             app:argType="com.example.university.model.Header" />
+    </fragment>
+    <fragment
+        android:id="@+id/admissionFragment"
+        android:name="com.example.university.AdmissionFragment"
+        android:label="fragment_admission"
+        tools:layout="@layout/fragment_admission" >
+        <action
+            android:id="@+id/action_admissionFragment_to_actualFragmenrt"
+            app:destination="@id/actualFragmenrt" />
+        <argument
+            android:name="currentQuestion"
+            app:argType="com.example.university.model.Priem" />
+    </fragment>
+    <fragment
+        android:id="@+id/bachelorFragment"
+        android:name="com.example.university.BachelorFragment"
+        android:label="fragment_bachelor"
+        tools:layout="@layout/fragment_bachelor" >
+        <action
+            android:id="@+id/action_bachelorFragment_to_programsFragment"
+            app:destination="@id/programsFragment" />
+        <argument
+            android:name="currentBachelor"
+            app:argType="com.example.university.model.BachelorPrograms" />
     </fragment>
 </navigation>

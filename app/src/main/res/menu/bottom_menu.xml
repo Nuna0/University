@@ -12,5 +12,5 @@
     <item
         android:id="@+id/infoFragment"
         android:title="Контакты"
-        android:icon="@drawable/ic_baseline_info_24"/>
+        android:icon="@drawable/ic_baseline_phone"/>
 </menu>
