@@ -1,13 +1,16 @@
 package com.example.university.repository
 
-import com.example.university.model.BachelorPrograms
-import com.example.university.model.Header
-import com.example.university.model.ImageText
-import com.example.university.model.Priem
+import com.example.university.model.*
 import com.example.university.network.RetrofitInstance
+import retrofit2.Response
 
 class Repository {
-    suspend fun getFirstRecyclerModel(): ArrayList<Header> {
+
+    suspend fun getFirstRecyclerModel(): Response<FirstRecyclerModel> {
+        return RetrofitInstance.api.getFirstRecyclerModel()
+    }
+
+    suspend fun getHeaderRecyclerModel(): ArrayList<Header> {
         val list = arrayListOf<Header>()
         arrayListOf(RetrofitInstance.api.getFirstRecyclerModel()).map {
             list.addAll(it.body()?.header.orEmpty())

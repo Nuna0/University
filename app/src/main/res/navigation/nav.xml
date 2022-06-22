@@ -16,6 +16,15 @@
         <action
             android:id="@+id/action_actualFragmenrt_to_admissionFragment"
             app:destination="@id/admissionFragment" />
+        <action
+            android:id="@+id/action_actualFragmenrt_to_projectTextFragment"
+            app:destination="@id/projectTextFragment" />
+        <action
+            android:id="@+id/action_actualFragmenrt_to_firstImageTextFragment"
+            app:destination="@id/firstImageTextFragment" />
+        <action
+            android:id="@+id/action_actualFragmenrt_to_secondImageTextFragment"
+            app:destination="@id/secondImageTextFragment" />
     </fragment>
     <fragment
         android:id="@+id/programsFragment"
@@ -45,7 +54,7 @@
     </fragment>
     <fragment
         android:id="@+id/admissionFragment"
-        android:name="com.example.university.AdmissionFragment"
+        android:name="com.example.university.screens.AdmissionFragment"
         android:label="fragment_admission"
         tools:layout="@layout/fragment_admission" >
         <action
@@ -57,7 +66,7 @@
     </fragment>
     <fragment
         android:id="@+id/bachelorFragment"
-        android:name="com.example.university.BachelorFragment"
+        android:name="com.example.university.screens.BachelorFragment"
         android:label="fragment_bachelor"
         tools:layout="@layout/fragment_bachelor" >
         <action
@@ -66,5 +75,32 @@
         <argument
             android:name="currentBachelor"
             app:argType="com.example.university.model.BachelorPrograms" />
+    </fragment>
+    <fragment
+        android:id="@+id/firstImageTextFragment"
+        android:name="com.example.university.FirstImageTextFragment"
+        android:label="fragment_first_image_text"
+        tools:layout="@layout/fragment_first_image_text" >
+        <action
+            android:id="@+id/action_firstImageTextFragment_to_actualFragmenrt"
+            app:destination="@id/actualFragmenrt" />
+    </fragment>
+    <fragment
+        android:id="@+id/projectTextFragment"
+        android:name="com.example.university.ProjectTextFragment"
+        android:label="fragment_project_text"
+        tools:layout="@layout/fragment_project_text" >
+        <action
+            android:id="@+id/action_projectTextFragment_to_actualFragmenrt"
+            app:destination="@id/actualFragmenrt" />
+    </fragment>
+    <fragment
+        android:id="@+id/secondImageTextFragment"
+        android:name="com.example.university.SecondImageTextFragment"
+        android:label="fragment_second_image_text"
+        tools:layout="@layout/fragment_second_image_text" >
+        <action
+            android:id="@+id/action_secondImageTextFragment_to_actualFragmenrt"
+            app:destination="@id/actualFragmenrt" />
     </fragment>
 </navigation>

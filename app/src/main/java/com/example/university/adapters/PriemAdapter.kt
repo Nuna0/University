@@ -22,14 +22,17 @@ class PriemAdapter : RecyclerView.Adapter<PriemAdapter.PriemViewHolder>(){
         parent: ViewGroup,
         viewType: Int
     ): PriemViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.second_recycler,parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(
+            R.layout.second_recycler,
+            parent,
+            false
+        )
         return PriemViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: PriemViewHolder, position: Int) {
         val currentItem = item[position]
         holder.bind(currentItem)
-
     }
 
     override fun getItemCount(): Int {
@@ -46,16 +49,13 @@ class PriemAdapter : RecyclerView.Adapter<PriemAdapter.PriemViewHolder>(){
 
         fun bind(model: Priem){
             Glide.with(itemView.context).load(model.imgMin)
-                .apply(RequestOptions.bitmapTransform(RoundedCorners(14)))
+                .apply(RequestOptions.bitmapTransform(RoundedCorners(20)))
                 .into(image)
 
             itemView.constraint.setOnClickListener {
                 val action = ActualFragmenrtDirections.actionActualFragmenrtToAdmissionFragment(model)
                 itemView.findNavController().navigate(action)
-
             }
-
         }
-
     }
 }

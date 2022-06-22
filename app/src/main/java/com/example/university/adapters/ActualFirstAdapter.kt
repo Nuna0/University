@@ -13,6 +13,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.university.model.FirstRecyclerModel
 import com.example.university.R
 import com.example.university.model.Header
+import com.example.university.model.Priem
 import com.example.university.screens.ActualFragmenrt
 import com.example.university.screens.ActualFragmenrtDirections
 import kotlinx.android.synthetic.main.first_recycler.view.*
@@ -31,7 +32,6 @@ class ActualFirstAdapter:RecyclerView.Adapter<ActualFirstAdapter.ViewHolder>(){
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = item[position]
         holder.bind(currentItem)
-
     }
 
     override fun getItemCount(): Int {
@@ -48,16 +48,13 @@ class ActualFirstAdapter:RecyclerView.Adapter<ActualFirstAdapter.ViewHolder>(){
 
         fun bind(model: Header){
             Glide.with(itemView.context).load(model.imgMin)
-                .apply(RequestOptions.bitmapTransform(RoundedCorners(14)))
+                .apply(RequestOptions.bitmapTransform(RoundedCorners(20)))
                 .into(image)
 
             itemView.constraint.setOnClickListener {
                 val action = ActualFragmenrtDirections.actionActualFragmenrtToFragmentHeaderOpen(model)
                 itemView.findNavController().navigate(action)
-
             }
-
-
         }
 
     }

@@ -7,12 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.university.MainViewModel
-import com.example.university.MainViewModelFactory
-import com.example.university.R
-import com.example.university.adapters.ActualFirstAdapter
+import com.example.university.viewModel.MainViewModel
+import com.example.university.viewModel.MainViewModelFactory
 import com.example.university.adapters.BachelorAdapter
-import com.example.university.databinding.ActualFragmenrtBinding
 import com.example.university.databinding.ProgramsFragmentBinding
 import com.example.university.repository.Repository
 
@@ -47,6 +44,10 @@ class ProgramsFragment : Fragment() {
     fun setBachelorAdapter(){
         val bachelorRecycler = binding.bachelor
         bachelorRecycler.adapter = bacheloradapter
+        val specialityRecycler = binding.speciality
+        specialityRecycler.adapter = bacheloradapter
+        val magistracyRecycler = binding.magistracy
+        magistracyRecycler.adapter = bacheloradapter
     }
 
     fun addBachelorRecycler(){

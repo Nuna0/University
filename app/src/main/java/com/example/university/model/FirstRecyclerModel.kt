@@ -13,6 +13,10 @@ data class FirstRecyclerModel (
     val priem: List<Priem>,
     @SerializedName("imageText")
     val imageText: ImageText,
+    @SerializedName("imageTextTwo")
+    val imageTextSecond: ImageTextSecond,
+    @SerializedName("projectText")
+    val projectText: ProjectText,
     @SerializedName("programmsBakalavr")
     val bachelorPrograms: List<BachelorPrograms>
 ): Parcelable
@@ -35,6 +39,20 @@ data class Priem(
 
 @Parcelize
 data class ImageText(
+    @SerializedName("id") val id: Int,
+    @SerializedName("title") val title: String,
+    @SerializedName("imgMin") val imgMin: String,
+):Parcelable
+
+@Parcelize
+data class ProjectText(
+    @SerializedName("id") val id: Int,
+    @SerializedName("title") val title: String,
+    @SerializedName("imgMin") val imgMin: String,
+):Parcelable
+
+@Parcelize
+data class ImageTextSecond(
     @SerializedName("id") val id: Int,
     @SerializedName("title") val title: String,
     @SerializedName("imgMin") val imgMin: String,

@@ -14,47 +14,165 @@
         android:layout_height="wrap_content"
         android:background="@color/back_color"
         app:title="Актуальное"
+        app:titleTextAppearance="@style/Toolbar.TitleText"
         app:titleTextColor="@color/white" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/firstRecycler"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:divider="@null"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:reverseLayout="true"/>
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="16dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/firstRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@null"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:reverseLayout="true"/>
 
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraint_firstImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_marginHorizontal="8dp">
 
-    <androidx.constraintlayout.utils.widget.ImageFilterView
-        android:id="@+id/imageText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_launcher_foreground"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginVertical="30dp"
-        android:background="@drawable/image_background"/>
+                <ImageView
+                    android:id="@+id/imageText"
+                    android:layout_width="350dp"
+                    android:layout_height="250dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
 
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="0dp"
+                    app:layout_constrainedWidth="true"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:background="@color/bottom_text_color"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:padding="6dp"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/programsOfBakalav"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:layout_marginStart="8dp"
-        android:padding="6dp"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/secondRecycler"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:divider="@null"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:reverseLayout="true"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/programsOfBakalav"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_marginStart="8dp"
+                android:padding="6dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/secondRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@null"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:reverseLayout="true"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="О факультете"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraint_secondImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp">
+
+                <ImageView
+                    android:id="@+id/imageTextSecond"
+                    android:layout_width="350dp"
+                    android:layout_height="250dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <TextView
+                    android:id="@+id/titleSecond"
+                    android:layout_width="0dp"
+                    app:layout_constrainedWidth="true"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:background="@color/bottom_text_color"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:padding="6dp"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Проектный офис"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraint_firstProject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginBottom="16dp">
+
+                <ImageView
+                    android:id="@+id/projectText"
+                    android:layout_width="350dp"
+                    android:layout_height="250dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <TextView
+                    android:id="@+id/titleProject"
+                    android:layout_width="0dp"
+                    app:layout_constrainedWidth="true"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:background="@color/bottom_text_color"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:padding="6dp"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
 
 
 </LinearLayout>

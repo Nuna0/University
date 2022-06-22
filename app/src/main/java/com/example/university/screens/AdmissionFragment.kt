@@ -1,4 +1,4 @@
-package com.example.university
+package com.example.university.screens
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,35 +10,35 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
+import com.example.university.R
 import com.example.university.databinding.FragmentAdmissionBinding
-import com.example.university.databinding.FragmentBachelorBinding
 
-class BachelorFragment : Fragment() {
+class AdmissionFragment : Fragment() {
 
-    private  var _binding: FragmentBachelorBinding?=null
+    private  var _binding: FragmentAdmissionBinding?=null
     private  val binding get() = _binding!!
-    private  val args by navArgs<BachelorFragmentArgs>()
+    private  val args by navArgs<AdmissionFragmentArgs>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentBachelorBinding.inflate(inflater, container, false)
+        _binding = FragmentAdmissionBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        Glide.with(context!!).load(args.currentBachelor.imgMin)
-            .apply(RequestOptions.bitmapTransform(RoundedCorners(20)))
+        Glide.with(context!!).load(args.currentQuestion.imgMin)
+            .apply(RequestOptions.bitmapTransform(RoundedCorners(14)))
             .into(binding.image)
+
+        binding.text.setText(args.currentQuestion.title)
 
         val toolbar = binding.toolbar
         toolbar.setNavigationOnClickListener {
-            findNavController().navigate(R.id.action_bachelorFragment_to_programsFragment)
+            findNavController().navigate(R.id.action_admissionFragment_to_actualFragmenrt)
         }
     }
-
+    
 }

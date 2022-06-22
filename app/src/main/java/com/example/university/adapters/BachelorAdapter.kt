@@ -1,27 +1,15 @@
 package com.example.university.adapters
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintHelper
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.request.RequestOptions
 import com.example.university.R
-import com.example.university.VerticalTextView
 import com.example.university.model.BachelorPrograms
-import com.example.university.model.Header
-import com.example.university.screens.ActualFragmenrtDirections
 import com.example.university.screens.ProgramsFragmentDirections
 import kotlinx.android.synthetic.main.bachelor_recycler.view.*
-import kotlinx.android.synthetic.main.first_recycler.view.*
 
 class BachelorAdapter: RecyclerView.Adapter<BachelorAdapter.BachelorViewHolder>(){
     private  var item = emptyList<BachelorPrograms>()
@@ -37,7 +25,6 @@ class BachelorAdapter: RecyclerView.Adapter<BachelorAdapter.BachelorViewHolder>(
     override fun onBindViewHolder(holder: BachelorViewHolder, position: Int) {
         val currentItem = item[position]
         holder.bind(currentItem)
-
     }
 
     override fun getItemCount(): Int {
@@ -66,9 +53,7 @@ class BachelorAdapter: RecyclerView.Adapter<BachelorAdapter.BachelorViewHolder>(
             itemView.linear.setOnClickListener {
                 val action =ProgramsFragmentDirections.actionProgramsFragmentToBachelorFragment(model)
                 itemView.findNavController().navigate(action)
-
             }
         }
-
     }
 }
