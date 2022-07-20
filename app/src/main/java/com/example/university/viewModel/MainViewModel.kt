@@ -13,7 +13,10 @@ class MainViewModel( private val repository: Repository): ViewModel() {
     val myResponse: MutableLiveData<ArrayList<Header>> = MutableLiveData()
     val myFirstResponse: MutableLiveData<Response<FirstRecyclerModel>> = MutableLiveData()
     val myPriemResponse: MutableLiveData<ArrayList<Priem>> = MutableLiveData()
+    val myImageSecondResponse: MutableLiveData<ArrayList<InfoFaculty>> = MutableLiveData()
     val myBachelorProgramsResponse: MutableLiveData<ArrayList<BachelorPrograms>> = MutableLiveData()
+    val mySpecialtyProgramsResponse: MutableLiveData<ArrayList<SpecialtyPrograms>> = MutableLiveData()
+    val myMagistracyProgramsResponse: MutableLiveData<ArrayList<MagistracyPrograms>> = MutableLiveData()
 
 
     fun getHeaderRecyclerModel(){
@@ -41,6 +44,27 @@ class MainViewModel( private val repository: Repository): ViewModel() {
         viewModelScope.launch {
             val response = repository.getBachelorPrograms()
             myBachelorProgramsResponse.value = response
+        }
+    }
+
+    fun getSpecialtyPrograms(){
+        viewModelScope.launch {
+            val response = repository.getSpecialtyPrograms()
+            mySpecialtyProgramsResponse.value = response
+        }
+    }
+
+    fun getMagistracyPrograms(){
+        viewModelScope.launch {
+            val response = repository.getMagistracyPrograms()
+            myMagistracyProgramsResponse.value = response
+        }
+    }
+
+    fun getImageSecondModel(){
+        viewModelScope.launch {
+            val response = repository.getImageRecyclerModel()
+            myImageSecondResponse.value = response
         }
     }
 

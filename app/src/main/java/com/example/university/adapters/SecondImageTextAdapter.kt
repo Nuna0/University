@@ -4,32 +4,30 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.navigation.findNavController
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.example.university.R
-import com.example.university.model.Priem
-import com.example.university.screens.ActualFragmenrtDirections
-import kotlinx.android.synthetic.main.first_recycler.view.*
+import com.example.university.model.InfoFaculty
 
-class PriemAdapter : RecyclerView.Adapter<PriemAdapter.PriemViewHolder>(){
-    private  var item = emptyList<Priem>()
+class SecondImageTextAdapter : RecyclerView.Adapter<SecondImageTextAdapter.ViewHolder>(){
+    private  var item = emptyList<InfoFaculty>()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): PriemViewHolder {
+    ): ViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(
-            R.layout.second_recycler,
+            R.layout.recycler_second_image_text,
             parent,
             false
         )
-        return PriemViewHolder(itemView)
+        return ViewHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: PriemViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = item[position]
         holder.bind(currentItem)
     }
@@ -38,23 +36,23 @@ class PriemAdapter : RecyclerView.Adapter<PriemAdapter.PriemViewHolder>(){
         return item.size
     }
 
-    fun setData(firstRecyclerModel: ArrayList<Priem>){
+    fun setData(firstRecyclerModel: ArrayList<InfoFaculty>){
         item = firstRecyclerModel
         notifyDataSetChanged()
     }
 
-    class PriemViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+        val title: TextView = itemView.findViewById(R.id.title)
         val image: ImageView = itemView.findViewById(R.id.image)
+        val description: TextView = itemView.findViewById(R.id.description)
 
-        fun bind(model: Priem){
-            Glide.with(itemView.context).load(model.imgMin)
+        fun bind(model: InfoFaculty?){
+            title.text = model?.title
+            description.text = model?.description
+            Glide.with(itemView.context).load(model?.imgMin)
                 .apply(RequestOptions.bitmapTransform(RoundedCorners(20)))
                 .into(image)
 
-            itemView.constraint.setOnClickListener {
-                val action = ActualFragmenrtDirections.actionActualFragmenrtToAdmissionFragment(model)
-                itemView.findNavController().navigate(action)
-            }
         }
     }
 }

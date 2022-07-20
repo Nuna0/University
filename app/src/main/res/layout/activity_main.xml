@@ -17,6 +17,7 @@
         app:menu="@menu/bottom_menu"
         style="@style/Widget.App.BottomNavigationView"
         android:background="@color/back_color"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

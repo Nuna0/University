@@ -61,10 +61,10 @@ class ActualFragmenrt : Fragment() {
     fun addImageText(){
         viewModel.getFirstRecyclerModel()
         viewModel.myFirstResponse.observe(this, Observer { response->
-            Glide.with(context!!).load(response.body()?.imageText?.imgMin)
+            /*Glide.with(context!!).load(response.body()?.imageText?.imgMin)
                 .apply(RequestOptions.bitmapTransform(RoundedCorners(30)))
                 .into(binding.imageText)
-            binding.title.text = response.body()?.imageText?.title
+            binding.title.text = response.body()?.imageText?.title*/
 
             Glide.with(context!!).load(response.body()?.projectText?.imgMin)
                 .apply(RequestOptions.bitmapTransform(RoundedCorners(30)))
@@ -95,9 +95,9 @@ class ActualFragmenrt : Fragment() {
     }
 
     fun goToImageText(){
-        binding.constraintFirstImage.setOnClickListener {
+        /*binding.constraintFirstImage.setOnClickListener {
             findNavController().navigate(R.id.action_actualFragmenrt_to_firstImageTextFragment)
-        }
+        }*/
 
         binding.constraintFirstProject.setOnClickListener {
             findNavController().navigate(R.id.action_actualFragmenrt_to_projectTextFragment)

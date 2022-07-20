@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class Constants {
     companion object{
-        const val BASE_URL = "https://pastebin.com"
+        const val BASE_URL = "https://abduladzhi.github.io"
 
     }
 }

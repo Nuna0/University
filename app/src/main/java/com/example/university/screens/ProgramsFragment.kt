@@ -10,6 +10,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.university.viewModel.MainViewModel
 import com.example.university.viewModel.MainViewModelFactory
 import com.example.university.adapters.BachelorAdapter
+import com.example.university.adapters.MagistracyAdapter
+import com.example.university.adapters.SpecialtyAdapter
 import com.example.university.databinding.ProgramsFragmentBinding
 import com.example.university.repository.Repository
 
@@ -20,6 +22,8 @@ class ProgramsFragment : Fragment() {
     private  var _binding: ProgramsFragmentBinding?=null
     private  val binding get() = _binding!!
     private val bacheloradapter by lazy { BachelorAdapter() }
+    private val specialtyadapter by lazy { SpecialtyAdapter() }
+    private val magistracyadapter by lazy { MagistracyAdapter() }
     val repository = Repository()
     val viewModelFactory = MainViewModelFactory(repository)
 
@@ -45,15 +49,25 @@ class ProgramsFragment : Fragment() {
         val bachelorRecycler = binding.bachelor
         bachelorRecycler.adapter = bacheloradapter
         val specialityRecycler = binding.speciality
-        specialityRecycler.adapter = bacheloradapter
+        specialityRecycler.adapter = specialtyadapter
         val magistracyRecycler = binding.magistracy
-        magistracyRecycler.adapter = bacheloradapter
+        magistracyRecycler.adapter = magistracyadapter
     }
 
     fun addBachelorRecycler(){
         viewModel.getBachelorPrograms()
         viewModel.myBachelorProgramsResponse.observe(this, Observer { response->
             bacheloradapter.setData(response)
+        })
+
+        viewModel.getSpecialtyPrograms()
+        viewModel.mySpecialtyProgramsResponse.observe(this, Observer { response->
+            specialtyadapter.setData(response)
+        })
+
+        viewModel.getMagistracyPrograms()
+        viewModel.myMagistracyProgramsResponse.observe(this, Observer {response->
+            magistracyadapter.setData(response)
         })
     }
 
