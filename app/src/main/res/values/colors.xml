@@ -12,4 +12,7 @@
     <color name="littledarker_than_white">#BCB9B9</color>
     <color name="info_color">#ECECEC</color>
     <color name="bottom_text_color">#0F0325</color>
+    <color name="graySelectDotsColor">#C6C6C6</color>
+    <color name="grayDotsColor">#898989</color>
+    <color name="transparentColor">#00FFFFFF</color>
 </resources>

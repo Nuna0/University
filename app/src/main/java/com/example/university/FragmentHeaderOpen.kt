@@ -25,7 +25,7 @@ class FragmentHeaderOpen : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        Glide.with(context!!).load(args.currentHeader.imgMax)
+        Glide.with(context!!).load(args.currentHeader.imgMin)
             .apply(RequestOptions.centerCropTransform())
             .into(binding.image)
 

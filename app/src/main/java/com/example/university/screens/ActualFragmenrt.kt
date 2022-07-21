@@ -11,13 +11,17 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
+import com.example.university.CustPagerTransformer
 import com.example.university.R
 import com.example.university.viewModel.MainViewModel
 import com.example.university.viewModel.MainViewModelFactory
 import com.example.university.adapters.ActualFirstAdapter
+import com.example.university.adapters.PagerAdapter
 import com.example.university.adapters.PriemAdapter
+import com.example.university.adapters.SlidingImageAdapter
 import com.example.university.databinding.ActualFragmenrtBinding
 import com.example.university.repository.Repository
+import kotlinx.android.synthetic.main.actual_fragmenrt.*
 
 
 class ActualFragmenrt : Fragment() {
@@ -77,6 +81,20 @@ class ActualFragmenrt : Fragment() {
 
             binding.titleSecond.text = response.body()?.imageTextSecond?.title
 
+            val adapter = PagerAdapter(response.body()?.photoList)
+
+            val pagerAdapter = SlidingImageAdapter(requireContext(), response.body()?.photoList as ArrayList<String>)
+            pager.apply {
+                this.adapter = pagerAdapter
+                setPageTransformer(false, CustPagerTransformer(requireContext()))
+                clipToPadding = false
+                setPadding(80, 0, 80, 0)
+                pageMargin = 20
+            }
+
+            indicator.setViewPager(pager)
+            val density = resources.displayMetrics.density
+            indicator.radius = density * 3
         })
     }
 

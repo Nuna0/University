@@ -74,9 +74,9 @@ class SecondImageTextFragment : Fragment() {
             })
         })
         val toolbar = binding.toolbar
-        /*toolbar.setNavigationOnClickListener {
-            findNavController().navigate(R.id.)
-        }*/
+        toolbar.setNavigationOnClickListener {
+            findNavController().navigate(com.example.university.R.id.action_secondImageTextFragment_to_actualFragmenrt)
+        }
     }
 
     fun createYoutubeVideo(){

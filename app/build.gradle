@@ -88,4 +88,8 @@ dependencies {
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:11.0.1'
     implementation "androidx.core:core-ktx:+"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    //Pager
+    implementation 'com.github.JakeWharton:ViewPagerIndicator:2.4.1'
+
 }

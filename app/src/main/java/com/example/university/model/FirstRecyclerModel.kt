@@ -11,6 +11,8 @@ data class FirstRecyclerModel (
     val header: List<Header>,
     @SerializedName("priem")
     val priem: List<Priem>?,
+    @SerializedName("photo")
+    val photoList: List<String>?,
     @SerializedName("imageText")
     val imageText: ImageText,
     @SerializedName("imageTextTwo")
@@ -34,7 +36,7 @@ data class Header(
     @SerializedName("id") val id: String,
     @SerializedName("title") val title: String,
     @SerializedName("imgMin") val imgMin: String,
-    @SerializedName("imgMax") val imgMax: String,
+    //@SerializedName("imgMax") val imgMax: String,
     @SerializedName("description") val description: String,
 ):Parcelable
 

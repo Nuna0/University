@@ -28,6 +28,28 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/pager"
+                android:layout_marginVertical="8dp"
+                android:layout_marginHorizontal="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="180dp"/>
+
+            <com.viewpagerindicator.CirclePageIndicator
+                android:gravity="bottom"
+                android:id="@+id/indicator"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginHorizontal="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dip"
+                app:centered="true"
+                app:fillColor="@color/graySelectDotsColor"
+                app:pageColor="@color/grayDotsColor"
+                app:snap="false"
+                app:strokeColor="@color/transparentColor" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/firstRecycler"
                 android:layout_width="match_parent"
