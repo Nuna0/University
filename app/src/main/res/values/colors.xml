@@ -7,12 +7,15 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="back_color">#18053C</color>
-    <color name="over_back_color">#1F074D</color>
+    <color name="back_color">#191c2e</color>
+    <color name="over_back_color">#21253d</color>
     <color name="littledarker_than_white">#BCB9B9</color>
     <color name="info_color">#ECECEC</color>
-    <color name="bottom_text_color">#0F0325</color>
+    <color name="bottom_text_color">#1C1C1E</color>
     <color name="graySelectDotsColor">#C6C6C6</color>
     <color name="grayDotsColor">#898989</color>
     <color name="transparentColor">#00FFFFFF</color>
+    <color name="color_phone_wright">#323771</color>
+    <color name="back_of_priem_recycler">#21263D</color>
+    <color name="color_text_learn_more">#1C1C1E</color>
 </resources>

@@ -2,6 +2,6 @@
     <string name="app_name">University</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="programsOfBakalav"> Приемная комиссия</string>
+    <string name="programsOfBakalav"> Приёмная комиссия</string>
     <string name="showAllPrograms">Показать все программы</string>
 </resources>

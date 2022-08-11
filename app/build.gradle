@@ -8,7 +8,7 @@ plugins {
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     androidExtensions {
         experimental = true
@@ -16,8 +16,8 @@ android {
 
     defaultConfig {
         applicationId "com.example.university"
-        minSdk 27
-        targetSdk 32
+        minSdk 25
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -91,5 +91,6 @@ dependencies {
 
     //Pager
     implementation 'com.github.JakeWharton:ViewPagerIndicator:2.4.1'
+    implementation 'androidx.viewpager2:viewpager2:1.0.0-alpha02'
 
 }

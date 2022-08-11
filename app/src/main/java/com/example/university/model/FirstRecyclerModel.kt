@@ -29,6 +29,8 @@ data class FirstRecyclerModel (
     val facultyInformation: FacultyInformation,
     @SerializedName("contactInformation")
     val contactsInformation: ContactsInformation,
+    @SerializedName("versionInfo")
+    val version: Version,
 ): Parcelable
 
 @Parcelize
@@ -36,7 +38,7 @@ data class Header(
     @SerializedName("id") val id: String,
     @SerializedName("title") val title: String,
     @SerializedName("imgMin") val imgMin: String,
-    //@SerializedName("imgMax") val imgMax: String,
+    @SerializedName("imgMax") val imgMax: ArrayList<String>,
     @SerializedName("description") val description: String,
 ):Parcelable
 
@@ -77,6 +79,19 @@ data class ProjectText(
     @SerializedName("id") val id: String,
     @SerializedName("title") val title: String,
     @SerializedName("imgMin") val imgMin: String,
+    @SerializedName("url") val url: String,
+    @SerializedName("image") val image: String,
+    @SerializedName("description") val description: String,
+    @SerializedName("infoProject")
+    val infoProject: ArrayList<InfoProject>,
+):Parcelable
+
+@Parcelize
+data class InfoProject(
+    @SerializedName("id") val id: String,
+    @SerializedName("title") val title: String,
+    @SerializedName("imgMin") val imgMin: String,
+    @SerializedName("description") val description: String,
 ):Parcelable
 
 @Parcelize
@@ -96,7 +111,8 @@ data class BachelorPrograms(
     @SerializedName("countBudz") val countBudget: String,
     @SerializedName("countPlat") val countPaid: String,
     @SerializedName("price") val price: String,
-):Parcelable
+    @SerializedName("napravlenie") val direction: String,
+    ):Parcelable
 
 @Parcelize
 data class SpecialtyPrograms(
@@ -108,6 +124,7 @@ data class SpecialtyPrograms(
     @SerializedName("countBudz") val countBudget: String,
     @SerializedName("countPlat") val countPaid: String,
     @SerializedName("price") val price: String,
+    @SerializedName("napravlenie") val direction: String,
 ):Parcelable
 
 @Parcelize
@@ -120,7 +137,9 @@ data class MagistracyPrograms(
     @SerializedName("countBudz") val countBudget: String,
     @SerializedName("countPlat") val countPaid: String,
     @SerializedName("price") val price: String,
-):Parcelable
+    @SerializedName("napravlenie") val direction: String,
+
+    ):Parcelable
 
 @Parcelize
 data class InfoFaculty(
@@ -136,6 +155,12 @@ data class FacultyInformation(
     @SerializedName("codeOne") val codeOne: String,
     @SerializedName("codeTwo") val codeTwo: String,
     @SerializedName("infoFaculty") val infoFaculty: ArrayList<InfoFaculty>,
+):Parcelable
+
+@Parcelize
+data class Version(
+    @SerializedName("version") val url: String,
+    @SerializedName("build") val codeOne: String,
 ):Parcelable
 
 

@@ -47,9 +47,9 @@ class SpecialtyAdapter : RecyclerView.Adapter<SpecialtyAdapter.SpecialtyViewHold
                 .apply(RequestOptions.bitmapTransform(RoundedCorners(14)))
                 .into(image)*/
 
-            codOfFaculty.text = "38.03.01"
+            codOfFaculty.text = model.id
             directionOfFaculty.text = model.title
-            info_direction.text = "Форма обучения: ${model.format} (${model.year}) \nКоличество бюджетных мест: ${model.countBudget} \nКоличество платных мест: ${model.countPaid} (${model.price}₽)"
+            info_direction.text = "Форма обучения: ${model.format} (${model.year}) \nКоличество бюджетных мест: ${model.countBudget} \nКоличество платных мест: ${model.countPaid} (${model.price}₽) \nНаправления подготовки: ${model.direction}"
 
             /*itemView.linear.setOnClickListener {
                 val action = ProgramsFragmentDirections.actionProgramsFragmentToBachelorFragment(model)

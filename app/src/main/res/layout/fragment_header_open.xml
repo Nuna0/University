@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,58 +7,43 @@
     tools:context=".FragmentHeaderOpen"
     android:orientation="vertical"
     android:background="@color/back_color"
-    android:layout_margin="8dp">
+    android:id="@+id/main">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/ic_cancel"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/back_color"
-        app:title=""
-        app:titleTextColor="@color/white"
-        app:navigationIcon="@drawable/ic__back"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/ic_cancel"
+        android:layout_margin="8dp"
+        android:elevation="7dp"/>
 
-    <ScrollView
+    <com.viewpagerindicator.CirclePageIndicator
+        android:elevation="5dp"
+        android:gravity="bottom"
+        android:id="@+id/indicator"
+        android:layout_marginHorizontal="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:padding="10dip"
+        app:centered="true"
+        app:fillColor="@color/graySelectDotsColor"
+        app:pageColor="@color/grayDotsColor"
+        app:snap="false"
+        app:strokeColor="@color/transparentColor" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/pager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/image"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginHorizontal="20dp"
-                android:src="@mipmap/ic_launcher"
-                />
-
-            <TextView
-                android:id="@+id/text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginHorizontal="20dp"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:padding="4dp"
-                />
-
-            <TextView
-                android:id="@+id/description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginHorizontal="20dp"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:padding="4dp"/>
-
-        </LinearLayout>
-    </ScrollView>
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

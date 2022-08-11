@@ -68,18 +68,19 @@ class SecondImageTextFragment : Fragment() {
                 override fun onReady(youTubePlayer: YouTubePlayer) {
                     val videoId = response.body()?.facultyInformation?.url
                     if (videoId != null) {
-                        youTubePlayer.loadVideo(videoId, 0f)
+                        youTubePlayer.cueVideo(videoId, 0f)
                     }
                 }
             })
+
+            response.body()?.facultyInformation?.let { adapter.setData(it.infoFaculty) }
+            recycler.adapter = adapter
         })
         val toolbar = binding.toolbar
-        toolbar.setNavigationOnClickListener {
-            findNavController().navigate(com.example.university.R.id.action_secondImageTextFragment_to_actualFragmenrt)
+        binding.arrowBack.setOnClickListener {
+            requireActivity().supportFragmentManager.popBackStack()
+            // findNavController().navigate(com.example.university.R.id.action_secondImageTextFragment_to_actualFragmenrt)
         }
     }
 
-    fun createYoutubeVideo(){
-
-    }
 }

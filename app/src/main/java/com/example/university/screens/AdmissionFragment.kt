@@ -34,7 +34,8 @@ class AdmissionFragment : Fragment() {
 
         val toolbar = binding.toolbar
         toolbar.setNavigationOnClickListener {
-            findNavController().navigate(R.id.action_admissionFragment_to_actualFragmenrt)
+            requireActivity().supportFragmentManager.popBackStack()
+           // findNavController().navigate(R.id.action_admissionFragment_to_actualFragmenrt)
         }
     }
     

@@ -39,7 +39,11 @@
         android:id="@+id/infoFragment"
         android:name="com.example.university.screens.InfoFragment"
         android:label="Контактная информация"
-        tools:layout="@layout/fragment_info" />
+        tools:layout="@layout/fragment_info" >
+        <action
+            android:id="@+id/action_infoFragment_to_infoAppFragment"
+            app:destination="@id/infoAppFragment" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentHeaderOpen"
         android:name="com.example.university.FragmentHeaderOpen"
@@ -105,5 +109,14 @@
         <argument
             android:name="currentImageSecond"
             app:argType="com.example.university.model.FacultyInformation" />
+    </fragment>
+    <fragment
+        android:id="@+id/infoAppFragment"
+        android:name="com.example.university.InfoAppFragment"
+        android:label="fragment_info_app"
+        tools:layout="@layout/fragment_info_app" >
+        <action
+            android:id="@+id/action_infoAppFragment_to_infoFragment"
+            app:destination="@id/infoFragment" />
     </fragment>
 </navigation>
