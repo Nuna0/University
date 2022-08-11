@@ -1,5 +1,6 @@
 package com.example.university.screens
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -16,6 +17,9 @@ import com.example.university.repository.Repository
 import com.example.university.viewModel.MainViewModel
 import com.example.university.viewModel.MainViewModelFactory
 import android.content.pm.PackageManager
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -43,13 +47,22 @@ class InfoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+        if( !hasConnection(requireContext()))
+        {
+            activity?.finish()
+            val intent = Intent(requireContext(), SplashActivity::class.java)
+            startActivity(intent)
 
-        addInfo()
-        /*binding.btnToTlgm.setOnClickListener {
+
+        }else {
+            viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+
+            addInfo()
+            /*binding.btnToTlgm.setOnClickListener {
             val i = Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/Dgu_ef_bot"))
             startActivity(i)
         }*/
+        }
 
     }
 
@@ -77,7 +90,7 @@ class InfoFragment : Fragment() {
                     .into(binding.photo)
 
                 imgTelegm.setOnClickListener{
-                    val i = Intent(Intent.ACTION_VIEW, Uri.parse(response.body()?.contactsInformation?.tgChannel))
+                    val i = Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/${response.body()?.contactsInformation?.tgChannel}"))
                     startActivity(i)
                 }
 
@@ -97,6 +110,27 @@ class InfoFragment : Fragment() {
 
             }
         })
+    }
+
+    fun  hasConnection(context: Context): Boolean
+    {
+        val cm: ConnectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        var wifiInfo: NetworkInfo? = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        if (wifiInfo != null && wifiInfo.isConnected())
+        {
+            return true;
+        }
+        wifiInfo = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+        if (wifiInfo != null && wifiInfo.isConnected())
+        {
+            return true;
+        }
+        wifiInfo = cm.getActiveNetworkInfo();
+        if (wifiInfo != null && wifiInfo.isConnected())
+        {
+            return true;
+        }
+        return false;
     }
 }
 

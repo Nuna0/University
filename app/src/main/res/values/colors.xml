@@ -18,4 +18,5 @@
     <color name="color_phone_wright">#323771</color>
     <color name="back_of_priem_recycler">#21263D</color>
     <color name="color_text_learn_more">#1C1C1E</color>
+    <color name="color_back_toast">#5F5E5E</color>
 </resources>

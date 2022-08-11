@@ -1,5 +1,9 @@
 package com.example.university.screens
 
+import android.content.Context
+import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -29,14 +33,43 @@ class AdmissionFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
+        if( !hasConnection(requireContext()))
+        {
+            activity?.finish()
+            val intent = Intent(requireContext(), SplashActivity::class.java)
+            startActivity(intent)
+
+
+        }else {
         adapter.setData(args.currentQuestion.infoAdmission)
         binding.recycler.adapter = adapter
 
         val toolbar = binding.toolbar
         toolbar.setNavigationOnClickListener {
-            requireActivity().supportFragmentManager.popBackStack()
-           // findNavController().navigate(R.id.action_admissionFragment_to_actualFragmenrt)
+            findNavController().popBackStack()
         }
+        }
+    }
+
+    fun  hasConnection(context: Context): Boolean
+    {
+        val cm: ConnectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        var wifiInfo: NetworkInfo? = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        if (wifiInfo != null && wifiInfo.isConnected())
+        {
+            return true;
+        }
+        wifiInfo = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+        if (wifiInfo != null && wifiInfo.isConnected())
+        {
+            return true;
+        }
+        wifiInfo = cm.getActiveNetworkInfo();
+        if (wifiInfo != null && wifiInfo.isConnected())
+        {
+            return true;
+        }
+        return false;
     }
     
 }

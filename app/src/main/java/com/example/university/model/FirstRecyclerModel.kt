@@ -29,8 +29,8 @@ data class FirstRecyclerModel (
     val facultyInformation: FacultyInformation,
     @SerializedName("contactInformation")
     val contactsInformation: ContactsInformation,
-    @SerializedName("versionInfo")
-    val version: Version,
+    @SerializedName("correctVersionAndroid")
+    val version: String,
 ): Parcelable
 
 @Parcelize
@@ -157,11 +157,11 @@ data class FacultyInformation(
     @SerializedName("infoFaculty") val infoFaculty: ArrayList<InfoFaculty>,
 ):Parcelable
 
-@Parcelize
+/*@Parcelize
 data class Version(
-    @SerializedName("version") val url: String,
-    @SerializedName("build") val codeOne: String,
-):Parcelable
+    @SerializedName("version") val codeOne: String,
+    @SerializedName("build") val code: String,
+):Parcelable*/
 
 
 

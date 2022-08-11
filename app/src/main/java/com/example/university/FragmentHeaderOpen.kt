@@ -1,10 +1,14 @@
 package com.example.university
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -31,37 +35,63 @@ class FragmentHeaderOpen : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         //val adapter = PagerAdapter(args.currentHeader.imgMax)
 
-        val pagerAdapter = SlidingImageAdapter(requireContext(),
-            args.currentHeader.imgMax
+        if( !hasConnection(requireContext()))
+        {
+            activity?.finish()
+            Toast.makeText(requireContext(), "Нет соединения с интернетом", Toast.LENGTH_LONG).show()
+            getActivity()?.finish()
+
+        }else {
+            val pagerAdapter = SlidingImageAdapter(
+                requireContext(),
+                args.currentHeader.imgMax
             )
-        pager.apply {
-            this.adapter = pagerAdapter
-            setPageTransformer(false, CustPagerTransformer(requireContext()))
-            clipToPadding = false
-            //setPadding(0, 0, 0, 0)
-            //pageMargin = 20
-        }
+            pager.apply {
+                this.adapter = pagerAdapter
+                setPageTransformer(false, CustPagerTransformer(requireContext()))
+                clipToPadding = false
+                //setPadding(0, 0, 0, 0)
+                //pageMargin = 20
+            }
 
-        indicator.setViewPager(pager)
-        val density = resources.displayMetrics.density
-        indicator.radius = density * 3
+            indicator.setViewPager(pager)
+            val density = resources.displayMetrics.density
+            indicator.radius = density * 3
 
-        /*val toolbar = binding.toolbar
+            /*val toolbar = binding.toolbar
         toolbar.setNavigationOnClickListener {
             findNavController().navigate(R.id.action_fragmentHeaderOpen_to_actualFragmenrt)
         }*/
 
-
-        binding.icCancel.setOnClickListener {
-            //dialog?.hide()
-           // requireActivity().supportFragmentManager.beginTransaction().remove(this).commit()
-            //requireActivity().supportFragmentManager.popBackStack()
-            //findNavController().navigate(R.id.action_fragmentHeaderOpen_to_actualFragmenrt)
-            findNavController().popBackStack()
-
-
+            binding.icCancel.setOnClickListener {
+                // requireActivity().supportFragmentManager.beginTransaction().remove(this).commit()
+                //requireActivity().supportFragmentManager.popBackStack()
+                //findNavController().navigate(R.id.action_fragmentHeaderOpen_to_actualFragmenrt)
+                findNavController().popBackStack()
+            }
         }
 
+    }
+
+    fun  hasConnection(context: Context): Boolean
+    {
+        val cm: ConnectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        var wifiInfo: NetworkInfo? = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        if (wifiInfo != null && wifiInfo.isConnected())
+        {
+            return true;
+        }
+        wifiInfo = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+        if (wifiInfo != null && wifiInfo.isConnected())
+        {
+            return true;
+        }
+        wifiInfo = cm.getActiveNetworkInfo();
+        if (wifiInfo != null && wifiInfo.isConnected())
+        {
+            return true;
+        }
+        return false;
     }
 
 }

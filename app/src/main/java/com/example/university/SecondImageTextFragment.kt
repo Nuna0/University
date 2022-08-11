@@ -27,6 +27,12 @@ import androidx.annotation.NonNull
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 
 import android.R
+import android.content.Context
+import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
+import android.widget.Toast
+import com.example.university.screens.SplashActivity
 
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 
@@ -51,37 +57,66 @@ class SecondImageTextFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //adapter.setData(args.currentImageSecond?.infoFaculty)
-        val recycler = binding.recycler
-        recycler.adapter = adapter
-        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
-        viewModel.getImageSecondModel()
-        viewModel.myImageSecondResponse.observe(this, Observer { response->
-            adapter.setData(response)
-        })
-        viewModel.getFirstRecyclerModel()
-        viewModel.myFirstResponse.observe(this, Observer { response->
-            val youTubePlayerView: YouTubePlayerView = binding.youtubePlayer
-            lifecycle.addObserver(youTubePlayerView)
-
-            youTubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
-                override fun onReady(youTubePlayer: YouTubePlayer) {
-                    val videoId = response.body()?.facultyInformation?.url
-                    if (videoId != null) {
-                        youTubePlayer.cueVideo(videoId, 0f)
-                    }
-                }
-            })
-
-            response.body()?.facultyInformation?.let { adapter.setData(it.infoFaculty) }
+        if( !hasConnection(requireContext()))
+        {
+            activity?.finish()
+            val intent = Intent(requireContext(), SplashActivity::class.java)
+            startActivity(intent)
+        }else {
+            //adapter.setData(args.currentImageSecond?.infoFaculty)
+            val recycler = binding.recycler
             recycler.adapter = adapter
-        })
-        val toolbar = binding.toolbar
-        binding.arrowBack.setOnClickListener {
-            findNavController().popBackStack()
+            viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+            viewModel.getImageSecondModel()
+            viewModel.myImageSecondResponse.observe(this, Observer { response ->
+                adapter.setData(response)
+            })
+            viewModel.getFirstRecyclerModel()
+            viewModel.myFirstResponse.observe(this, Observer { response ->
+                val youTubePlayerView: YouTubePlayerView = binding.youtubePlayer
+                lifecycle.addObserver(youTubePlayerView)
+
+                youTubePlayerView.addYouTubePlayerListener(object :
+                    AbstractYouTubePlayerListener() {
+                    override fun onReady(youTubePlayer: YouTubePlayer) {
+                        val videoId = response.body()?.facultyInformation?.url
+                        if (videoId != null) {
+                            youTubePlayer.cueVideo(videoId, 0f)
+                        }
+                    }
+                })
+
+                response.body()?.facultyInformation?.let { adapter.setData(it.infoFaculty) }
+                recycler.adapter = adapter
+            })
+            val toolbar = binding.toolbar
+            binding.arrowBack.setOnClickListener {
+                findNavController().popBackStack()
 //            requireActivity().supportFragmentManager.popBackStack()
-            // findNavController().navigate(com.example.university.R.id.action_secondImageTextFragment_to_actualFragmenrt)
+                // findNavController().navigate(com.example.university.R.id.action_secondImageTextFragment_to_actualFragmenrt)
+            }
         }
+    }
+
+    fun  hasConnection(context: Context): Boolean
+    {
+        val cm: ConnectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        var wifiInfo: NetworkInfo? = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        if (wifiInfo != null && wifiInfo.isConnected())
+        {
+            return true;
+        }
+        wifiInfo = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+        if (wifiInfo != null && wifiInfo.isConnected())
+        {
+            return true;
+        }
+        wifiInfo = cm.getActiveNetworkInfo();
+        if (wifiInfo != null && wifiInfo.isConnected())
+        {
+            return true;
+        }
+        return false;
     }
 
 }

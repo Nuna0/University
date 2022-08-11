@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         {
             return true;
         }
-        wifiInfo = cm.getActiveNetworkInfo();
+        wifiInfo = cm.getActiveNetworkInfo()
         if (wifiInfo != null && wifiInfo.isConnected())
         {
             return true;

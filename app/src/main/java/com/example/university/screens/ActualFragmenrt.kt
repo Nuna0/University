@@ -1,7 +1,8 @@
 package com.example.university.screens
 
-import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
+import android.icu.lang.UCharacter
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.os.Bundle
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -27,6 +29,8 @@ import com.example.university.databinding.ActualFragmenrtBinding
 import com.example.university.repository.Repository
 import kotlinx.android.synthetic.main.actual_fragmenrt.*
 import java.util.*
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 
 class ActualFragmenrt : Fragment() {
@@ -37,6 +41,7 @@ class ActualFragmenrt : Fragment() {
     private val priemAdapter by lazy { PriemAdapter() }
     val repository = Repository()
     val viewModelFactory = MainViewModelFactory(repository)
+    var position = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,18 +51,40 @@ class ActualFragmenrt : Fragment() {
         return binding.root
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putInt("HEADER", position)
+        super.onSaveInstanceState(outState)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        savedInstanceState!!.getInt("HEADER")
+        binding.container.scrollTo(savedInstanceState.getInt("HEADER"),savedInstanceState.getInt("HEADER"))
+
+        if( !hasConnection(requireContext()))
+        {
+            activity?.finish()
+            val intent = Intent(requireContext(), SplashActivity::class.java)
+            startActivity(intent)
+        }else{
+
         val firstRecycler = binding.firstRecycler
         firstRecycler.adapter = adapter
+            val layoutManager = LinearLayoutManager(
+                context
+            )
+            layoutManager.orientation = RecyclerView.HORIZONTAL
+            layoutManager.stackFromEnd = false
+            firstRecycler.setLayoutManager(layoutManager)
+
         setPriemAdapter()
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
 
         addHeaderRecycler()
         addImageText()
         addPriemRecycler()
-        goToImageText()
+        goToImageText()}
 
     }
 
@@ -85,30 +112,24 @@ class ActualFragmenrt : Fragment() {
     fun setPriemAdapter() {
         val priemRecycler = binding.secondRecycler
         priemRecycler.adapter = priemAdapter
+        val layoutManager = LinearLayoutManager(
+            context
+        )
+        layoutManager.orientation = RecyclerView.HORIZONTAL
+        layoutManager.stackFromEnd = false
+        priemRecycler.setLayoutManager(layoutManager)
 
     }
 
     fun addImageText(){
         viewModel.getFirstRecyclerModel()
         viewModel.myFirstResponse.observe(this, Observer { response->
-            /*Glide.with(context!!).load(response.body()?.imageText?.imgMin)
-                .apply(RequestOptions.bitmapTransform(RoundedCorners(30)))
-                .into(binding.imageText)
-            binding.title.text = response.body()?.imageText?.title*/
 
             Glide.with(context!!).load(response.body()?.projectText?.imgMin)
                 .apply(RequestOptions.bitmapTransform(RoundedCorners(20)))
                 .into(binding.projectText)
             binding.titleProject.text = response.body()?.projectText?.title
 
-            /*if(!response.isSuccessful){
-                val builder = AlertDialog.Builder(requireContext())
-                builder.setTitle("Важное сообщение!")
-                    .setMessage("Проверьте подключение к интернету!")
-                    .setPositiveButton("ОК") {
-                            dialog, id ->  dialog.cancel()
-                    }
-            }*/
             Glide.with(context!!).load(response.body()?.imageTextSecond?.imgMin)
                 .apply(RequestOptions.bitmapTransform(RoundedCorners(20)))
                 .into(binding.imageTextSecond)
@@ -119,8 +140,7 @@ class ActualFragmenrt : Fragment() {
             val adapter = PagerAdapter(response.body()?.photoList)
 
             val pagerAdapter = SlidingImageAdapter(requireContext(),
-                response.body()?.photoList as ArrayList<String>
-                /*swipetoclose = {}*/)
+                response.body()?.photoList as ArrayList<String>)
             binding.pager.apply {
                 this.adapter = pagerAdapter
                 setPageTransformer(false, CustPagerTransformer(requireContext()))
@@ -152,18 +172,21 @@ class ActualFragmenrt : Fragment() {
     }
 
     fun goToImageText(){
-        /*binding.constraintFirstImage.setOnClickListener {
-            findNavController().navigate(R.id.action_actualFragmenrt_to_firstImageTextFragment)
-        }*/
+        if( !hasConnection(requireContext()))
+        {
+            Toast.makeText(requireContext(), "Нет соединения с интернетом", Toast.LENGTH_LONG).show()
+
+        }else{
 
         binding.constraintFirstProject.setOnClickListener {
             findNavController().navigate(R.id.action_actualFragmenrt_to_projectTextFragment)
+            position = 2
         }
 
         binding.constraintSecondImage.setOnClickListener {
             findNavController().navigate(R.id.action_actualFragmenrt_to_secondImageTextFragment)
-        }
-
+            position = 3
+        }}
 
     }
 
