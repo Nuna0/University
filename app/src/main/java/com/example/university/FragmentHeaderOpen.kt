@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.DialogFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.university.adapters.SlidingImageAdapter
 import com.example.university.databinding.FragmentHeaderOpenBinding
@@ -13,7 +15,7 @@ import kotlinx.android.synthetic.main.actual_fragmenrt.indicator
 import kotlinx.android.synthetic.main.actual_fragmenrt.pager
 import kotlinx.android.synthetic.main.fragment_header_open.*
 
-class FragmentHeaderOpen : Fragment() {
+class FragmentHeaderOpen : DialogFragment() {
     private  var _binding: FragmentHeaderOpenBinding?=null
     private  val binding get() = _binding!!
     private  val args by navArgs<FragmentHeaderOpenArgs>()
@@ -39,8 +41,6 @@ class FragmentHeaderOpen : Fragment() {
             //setPadding(0, 0, 0, 0)
             //pageMargin = 20
         }
-        val current = pager.currentItem
-        val totalItems = pager.adapter?.count
 
         indicator.setViewPager(pager)
         val density = resources.displayMetrics.density
@@ -51,28 +51,14 @@ class FragmentHeaderOpen : Fragment() {
             findNavController().navigate(R.id.action_fragmentHeaderOpen_to_actualFragmenrt)
         }*/
 
-        /*last.setOnClickListener {
-
-            if (totalItems != null) {
-                if(current < totalItems - 1) {
-                    pager.setCurrentItem(current + 1, true);
-                }
-            }
-
-        }
-
-        next.setOnClickListener {
-
-            if(current != 0) {
-                pager.setCurrentItem(current - 1, true);
-            }
-        }*/
 
         binding.icCancel.setOnClickListener {
-            //dialog?.cancel()
+            //dialog?.hide()
            // requireActivity().supportFragmentManager.beginTransaction().remove(this).commit()
-            requireActivity().supportFragmentManager.popBackStack()
+            //requireActivity().supportFragmentManager.popBackStack()
             //findNavController().navigate(R.id.action_fragmentHeaderOpen_to_actualFragmenrt)
+            findNavController().popBackStack()
+
 
         }
 

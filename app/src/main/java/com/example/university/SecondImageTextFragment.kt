@@ -37,7 +37,7 @@ class SecondImageTextFragment : Fragment() {
     private val viewModelFactory = MainViewModelFactory(repository)
     private lateinit var viewModel: MainViewModel
     private val adapter by lazy { SecondImageTextAdapter() }
-    private  val args by navArgs <SecondImageTextFragmentArgs>()
+    //private  val args by navArgs <SecondImageTextFragmentArgs>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -78,7 +78,8 @@ class SecondImageTextFragment : Fragment() {
         })
         val toolbar = binding.toolbar
         binding.arrowBack.setOnClickListener {
-            requireActivity().supportFragmentManager.popBackStack()
+            findNavController().popBackStack()
+//            requireActivity().supportFragmentManager.popBackStack()
             // findNavController().navigate(com.example.university.R.id.action_secondImageTextFragment_to_actualFragmenrt)
         }
     }

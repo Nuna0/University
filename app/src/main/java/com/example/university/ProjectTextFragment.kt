@@ -52,8 +52,9 @@ class ProjectTextFragment : Fragment() {
 
         val toolbar = binding.toolbar
         binding.arrowBack.setOnClickListener {
-            requireActivity().supportFragmentManager.popBackStack()
+            //requireActivity().supportFragmentManager.popBackStack()
             //findNavController().navigate(R.id.action_projectTextFragment_to_actualFragmenrt)
+            findNavController().popBackStack()
         }
 
         viewModel.getFirstRecyclerModel()
