@@ -46,8 +46,8 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentHeaderOpen"
-        android:name="com.example.university.FragmentHeaderOpen"
-        android:label=""
+        android:name="com.example.university.screens.FragmentHeaderOpen"
+        android:label="fragment_header"
         tools:layout="@layout/fragment_header_open" >
         <action
             android:id="@+id/action_fragmentHeaderOpen_to_actualFragmenrt"
@@ -82,7 +82,7 @@
     </fragment>
     <fragment
         android:id="@+id/firstImageTextFragment"
-        android:name="com.example.university.FirstImageTextFragment"
+        android:name="com.example.university.screens.FirstImageTextFragment"
         android:label="fragment_first_image_text"
         tools:layout="@layout/fragment_first_image_text" >
         <action
@@ -91,7 +91,7 @@
     </fragment>
     <fragment
         android:id="@+id/projectTextFragment"
-        android:name="com.example.university.ProjectTextFragment"
+        android:name="com.example.university.screens.ProjectTextFragment"
         android:label="fragment_project_text"
         tools:layout="@layout/fragment_project_text" >
         <action
@@ -100,7 +100,7 @@
     </fragment>
     <fragment
         android:id="@+id/secondImageTextFragment"
-        android:name="com.example.university.SecondImageTextFragment"
+        android:name="com.example.university.screens.SecondImageTextFragment"
         android:label="fragment_second_image_text"
         tools:layout="@layout/fragment_second_image_text" >
         <action
@@ -112,7 +112,7 @@
     </fragment>
     <fragment
         android:id="@+id/infoAppFragment"
-        android:name="com.example.university.InfoAppFragment"
+        android:name="com.example.university.screens.InfoAppFragment"
         android:label="fragment_info_app"
         tools:layout="@layout/fragment_info_app" >
         <action

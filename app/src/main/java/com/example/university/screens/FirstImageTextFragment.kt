@@ -1,4 +1,4 @@
-package com.example.university
+package com.example.university.screens
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.example.university.R
 import com.example.university.databinding.FragmentFirstImageTextBinding
-import com.example.university.databinding.FragmentHeaderOpenBinding
 
 class FirstImageTextFragment : Fragment() {
     private  var _binding: FragmentFirstImageTextBinding?=null

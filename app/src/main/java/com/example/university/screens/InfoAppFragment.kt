@@ -1,4 +1,4 @@
-package com.example.university
+package com.example.university.screens
 
 import android.content.Context
 import android.net.ConnectivityManager
@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
@@ -48,7 +49,7 @@ class InfoAppFragment : Fragment() {
 
         }else {
             binding.arrowBack.setOnClickListener {
-                requireActivity().supportFragmentManager.popBackStack()
+                findNavController().popBackStack()
                 //findNavController().navigate(com.example.university.R.id.action_infoAppFragment_to_infoFragment)
             }
 

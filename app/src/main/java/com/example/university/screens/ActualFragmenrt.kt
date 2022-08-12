@@ -59,8 +59,12 @@ class ActualFragmenrt : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        savedInstanceState!!.getInt("HEADER")
-        binding.container.scrollTo(savedInstanceState.getInt("HEADER"),savedInstanceState.getInt("HEADER"))
+        if(savedInstanceState != null){
+            position = savedInstanceState.getInt("HEADER")
+            //binding.container.scrollTo()
+        }else{
+
+        }
 
         if( !hasConnection(requireContext()))
         {

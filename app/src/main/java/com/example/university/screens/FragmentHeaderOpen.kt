@@ -1,23 +1,21 @@
-package com.example.university
+package com.example.university.screens
 
 import android.content.Context
+import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.university.CustPagerTransformer
 import com.example.university.adapters.SlidingImageAdapter
 import com.example.university.databinding.FragmentHeaderOpenBinding
-import kotlinx.android.synthetic.main.actual_fragmenrt.*
 import kotlinx.android.synthetic.main.actual_fragmenrt.indicator
 import kotlinx.android.synthetic.main.actual_fragmenrt.pager
-import kotlinx.android.synthetic.main.fragment_header_open.*
 
 class FragmentHeaderOpen : DialogFragment() {
     private  var _binding: FragmentHeaderOpenBinding?=null
@@ -38,8 +36,8 @@ class FragmentHeaderOpen : DialogFragment() {
         if( !hasConnection(requireContext()))
         {
             activity?.finish()
-            Toast.makeText(requireContext(), "Нет соединения с интернетом", Toast.LENGTH_LONG).show()
-            getActivity()?.finish()
+            val intent = Intent(requireContext(), SplashActivity::class.java)
+            startActivity(intent)
 
         }else {
             val pagerAdapter = SlidingImageAdapter(

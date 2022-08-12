@@ -2,6 +2,7 @@ package com.example.university.screens
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import androidx.appcompat.app.AppCompatActivity
@@ -19,6 +20,7 @@ import com.example.university.repository.Repository
 import com.example.university.viewModel.MainViewModel
 import com.example.university.viewModel.MainViewModelFactory
 import kotlinx.android.synthetic.main.activity_splash.*
+import kotlinx.android.synthetic.main.activity_splash.view.*
 
 class SplashActivity : AppCompatActivity() {
 
@@ -35,8 +37,12 @@ class SplashActivity : AppCompatActivity() {
         {
             /*Toast.makeText(this, "Нет соединения с интернетом", ).show()
             this.finish()*/
-            toast.text = "Нет соединения с интернетом"
+            toast.text = "Нет соединения с Интернетом. \nПодключитесь к Интернету и попробуйте еще раз."
+            toast.setTextColor(Color.BLACK)
+            toast.setTextSize(16f)
+            toast.setBackgroundResource(R.color.white)
             toast.visibility = View.VISIBLE
+            photo.setImageResource(R.drawable.ic_wifi_x_thin_svgrepo_com)
         }else{
 
             viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
@@ -63,9 +69,6 @@ class SplashActivity : AppCompatActivity() {
 
             })
         }
-
-
-
 
     }
 
