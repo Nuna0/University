@@ -58,12 +58,5 @@ class Repository {
         return list
     }
 
-   /* suspend fun getInfoAdmission(): ArrayList<InfoAdmission> {
-        val list = arrayListOf<InfoAdmission>()
-        arrayListOf(RetrofitInstance.api.getPriemModel()).map {
-            list.addAll(it.body()?.infoAdmission.orEmpty())
-        }
-        return list
-    }*/
 
 }

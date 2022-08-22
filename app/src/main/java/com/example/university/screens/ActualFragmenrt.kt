@@ -2,7 +2,6 @@ package com.example.university.screens
 
 import android.content.Context
 import android.content.Intent
-import android.icu.lang.UCharacter
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.os.Bundle
@@ -141,10 +140,14 @@ class ActualFragmenrt : Fragment() {
             binding.titleSecond.text = response.body()?.imageTextSecond?.title
             binding.titleProject.text = response.body()?.imageTextSecond?.title
 
-            val adapter = PagerAdapter(response.body()?.photoList)
+            //val adapter = PagerAdapter(response.body()?.photoList)
 
-            val pagerAdapter = SlidingImageAdapter(requireContext(),
-                response.body()?.photoList as ArrayList<String>)
+            val pagerAdapter = activity?.let {
+                PagerAdapter(
+                    requireContext(),
+                    response.body()?.photoList as ArrayList<String>,
+                )
+            }
             binding.pager.apply {
                 this.adapter = pagerAdapter
                 setPageTransformer(false, CustPagerTransformer(requireContext()))

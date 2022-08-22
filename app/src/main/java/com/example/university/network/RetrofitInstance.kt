@@ -13,7 +13,6 @@ object RetrofitInstance {
 
     val api: MainApi by lazy {
         retrofit.create(MainApi::class.java)
-
     }
 }
 

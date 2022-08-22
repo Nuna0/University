@@ -64,17 +64,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginStart="8dp"
-                android:textSize="18dp"
+                android:textSize="24dp"
                 android:textStyle="bold"
                 android:textColor="@color/white"
-                android:text="Проектный центр" />
+                android:text="Проектный офис" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:nestedScrollingEnabled="false"
                 android:id="@+id/recycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/over_back_color"
+                android:background="@color/back_color"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
         </LinearLayout>

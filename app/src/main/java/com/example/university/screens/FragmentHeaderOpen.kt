@@ -40,10 +40,14 @@ class FragmentHeaderOpen : DialogFragment() {
             startActivity(intent)
 
         }else {
-            val pagerAdapter = SlidingImageAdapter(
-                requireContext(),
-                args.currentHeader.imgMax
-            )
+
+            val pagerAdapter = activity?.let {
+                SlidingImageAdapter(
+                    requireContext(),
+                    args.currentHeader.imgMax,
+
+                )
+            }
             pager.apply {
                 this.adapter = pagerAdapter
                 setPageTransformer(false, CustPagerTransformer(requireContext()))

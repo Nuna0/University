@@ -79,7 +79,7 @@
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="14sp"
-                    android:paddingHorizontal="26dp"
+                    android:paddingHorizontal="15dp"
                     android:background="@drawable/back_phone_wright"/>
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -91,10 +91,11 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/btnToPhone"
                     android:layout_marginStart="16dp"
+                    android:layout_marginEnd = "16dp"
                     android:text="Написать в чат "
                     android:textColor="@color/white"
                     android:textAllCaps="false"
-                    android:paddingHorizontal="26dp"
+                    android:paddingHorizontal="15dp"
                     android:textSize="14sp"
                     android:background="@drawable/back_phone_wright" />
 

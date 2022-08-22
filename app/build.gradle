@@ -91,4 +91,5 @@ dependencies {
     implementation 'com.github.JakeWharton:ViewPagerIndicator:2.4.1'
     implementation 'androidx.viewpager2:viewpager2:1.0.0-alpha02'
 
+    implementation 'androidx.palette:palette-ktx:1.0.0'
 }

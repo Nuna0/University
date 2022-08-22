@@ -157,11 +157,6 @@ data class FacultyInformation(
     @SerializedName("infoFaculty") val infoFaculty: ArrayList<InfoFaculty>,
 ):Parcelable
 
-/*@Parcelize
-data class Version(
-    @SerializedName("version") val codeOne: String,
-    @SerializedName("build") val code: String,
-):Parcelable*/
 
 
 
