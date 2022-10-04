@@ -15,11 +15,11 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.example.university"
+        applicationId "ru.ef.university"
         minSdk 24
         targetSdk 33
-        versionCode 1
-        versionName "1.0"
+        versionCode 5
+        versionName "1.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -92,4 +92,7 @@ dependencies {
     implementation 'androidx.viewpager2:viewpager2:1.0.0-alpha02'
 
     implementation 'androidx.palette:palette-ktx:1.0.0'
+
+    implementation "de.hdodenhof:circleimageview:3.1.0"
+
 }

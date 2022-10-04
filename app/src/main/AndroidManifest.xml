@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.university">
+    package="ru.ef.university">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
@@ -14,7 +14,7 @@
         android:theme="@style/Theme.University">
 
         <activity
-            android:name=".screens.SplashActivity"
+            android:name="ru.ef.university.screens.SplashActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".screens.MainActivity"
+            android:name="ru.ef.university.screens.MainActivity"
             android:exported="false"
             android:screenOrientation="portrait">
 

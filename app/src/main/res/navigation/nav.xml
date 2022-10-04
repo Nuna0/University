@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/actualFragmenrt"
-        android:name="com.example.university.screens.ActualFragmenrt"
+        android:name="ru.ef.university.screens.ActualFragmenrt"
         android:label="Актуальное"
         tools:layout="@layout/actual_fragmenrt" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/programsFragment"
-        android:name="com.example.university.screens.ProgramsFragment"
+        android:name="ru.ef.university.screens.ProgramsFragment"
         android:label="Программы"
         tools:layout="@layout/programs_fragment" >
         <action
@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/infoFragment"
-        android:name="com.example.university.screens.InfoFragment"
+        android:name="ru.ef.university.screens.InfoFragment"
         android:label="Контактная информация"
         tools:layout="@layout/fragment_info" >
         <action
@@ -46,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentHeaderOpen"
-        android:name="com.example.university.screens.FragmentHeaderOpen"
+        android:name="ru.ef.university.screens.FragmentHeaderOpen"
         android:label="fragment_header"
         tools:layout="@layout/fragment_header_open" >
         <action
@@ -54,11 +54,11 @@
             app:destination="@id/actualFragmenrt" />
         <argument
             android:name="currentHeader"
-            app:argType="com.example.university.model.Header" />
+            app:argType="ru.ef.university.model.Header" />
     </fragment>
     <fragment
         android:id="@+id/admissionFragment"
-        android:name="com.example.university.screens.AdmissionFragment"
+        android:name="ru.ef.university.screens.AdmissionFragment"
         android:label="fragment_admission"
         tools:layout="@layout/fragment_admission" >
         <action
@@ -66,11 +66,11 @@
             app:destination="@id/actualFragmenrt" />
         <argument
             android:name="currentQuestion"
-            app:argType="com.example.university.model.Priem" />
+            app:argType="ru.ef.university.model.Priem" />
     </fragment>
     <fragment
         android:id="@+id/bachelorFragment"
-        android:name="com.example.university.screens.BachelorFragment"
+        android:name="ru.ef.university.screens.BachelorFragment"
         android:label="fragment_bachelor"
         tools:layout="@layout/fragment_bachelor" >
         <action
@@ -78,11 +78,11 @@
             app:destination="@id/programsFragment" />
         <argument
             android:name="currentBachelor"
-            app:argType="com.example.university.model.BachelorPrograms" />
+            app:argType="ru.ef.university.model.BachelorPrograms" />
     </fragment>
     <fragment
         android:id="@+id/firstImageTextFragment"
-        android:name="com.example.university.screens.FirstImageTextFragment"
+        android:name="ru.ef.university.screens.FirstImageTextFragment"
         android:label="fragment_first_image_text"
         tools:layout="@layout/fragment_first_image_text" >
         <action
@@ -91,7 +91,7 @@
     </fragment>
     <fragment
         android:id="@+id/projectTextFragment"
-        android:name="com.example.university.screens.ProjectTextFragment"
+        android:name="ru.ef.university.screens.ProjectTextFragment"
         android:label="fragment_project_text"
         tools:layout="@layout/fragment_project_text" >
         <action
@@ -100,7 +100,7 @@
     </fragment>
     <fragment
         android:id="@+id/secondImageTextFragment"
-        android:name="com.example.university.screens.SecondImageTextFragment"
+        android:name="ru.ef.university.screens.SecondImageTextFragment"
         android:label="fragment_second_image_text"
         tools:layout="@layout/fragment_second_image_text" >
         <action
@@ -108,11 +108,11 @@
             app:destination="@id/actualFragmenrt" />
         <argument
             android:name="currentImageSecond"
-            app:argType="com.example.university.model.FacultyInformation" />
+            app:argType="ru.ef.university.model.FacultyInformation" />
     </fragment>
     <fragment
         android:id="@+id/infoAppFragment"
-        android:name="com.example.university.screens.InfoAppFragment"
+        android:name="ru.ef.university.screens.InfoAppFragment"
         android:label="fragment_info_app"
         tools:layout="@layout/fragment_info_app" >
         <action

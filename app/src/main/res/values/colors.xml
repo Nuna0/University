@@ -20,4 +20,5 @@
     <color name="color_text_learn_more">#1C1C1E</color>
     <color name="color_back_toast">#5F5E5E</color>
     <color name="default_title_background" />
+    <color name="gray_color_priem">#CBCBD0</color>
 </resources>
